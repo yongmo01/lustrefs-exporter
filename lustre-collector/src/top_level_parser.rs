@@ -77,6 +77,11 @@ where
             healthy: false,
             targets,
         })),
+        // Handle empty health_check values - treat as healthy
+        (string("").map(|_| HealthCheckStat {
+            healthy: true,
+            targets: vec![],
+        })),
     ))
 }
 
